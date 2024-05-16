@@ -9,13 +9,13 @@
     mm = String(today.getMonth() + 1).padStart(2, "0"),
     yyyy = today.getFullYear(),
     nextYear = yyyy + 1,
-    dayMonth = "05/16/",
+    dayMonth = "05/17/",
     // تحديد التاريخ والوقت لانتهاء العد التنازلي بتوقيت 24 ساعة
-    birthday = dayMonth + yyyy + " 22:46:00";
+    birthday = dayMonth + yyyy + " 22:52:00";
 
   today = mm + "/" + dd + "/" + yyyy;
   if (today > birthday) {
-    birthday = dayMonth + nextYear + " 22:46:00";
+    birthday = dayMonth + nextYear + " 22:52:00";
   }
 
   const countDown = new Date(birthday).getTime(),
@@ -38,7 +38,7 @@
         document.getElementById("videoText").style.display = "block";
         document.getElementById("quizText").style.display = "block";
         document.getElementById("noteText").style.display = "block";
-        clearInterval(x); // إيقاف العداد المتسلسل بمجرد انتهاء العد التنازلي
+        clearInterval(x);
       }
     }, 0);
 })();
