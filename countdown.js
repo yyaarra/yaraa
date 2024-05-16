@@ -9,7 +9,7 @@
     mm = String(today.getMonth() + 1).padStart(2, "0"),
     yyyy = today.getFullYear(),
     nextYear = yyyy + 1,
-    dayMonth = "05/17/",
+    dayMonth = "05/16/",
     // تحديد التاريخ والوقت لانتهاء العد التنازلي بتوقيت 24 ساعة
     birthday = dayMonth + yyyy + " 22:52:00";
 
