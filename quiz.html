@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كويز</title>
+<!-- استيراد خط العرض Cairo -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap">
+<style>
+    /* تطبيق خط العرض Cairo على جميع العناصر */
+    * {
+        font-family: 'Cairo', sans-serif;
+    }
+
+    /* إعداد صفحة العرض */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: #2acead; /* تغيير لون الخلفية */
+        overflow: hidden; /* منع التمرير الافتراضي */
+    }
+
+    /* تنسيق العناصر في الحاوية */
+    .container {
+        color: #000000;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        height: 100%; /* تحديد ارتفاع الحاوية */
+        overflow-y: auto; /* السماح بالتمرير العمودي */
+    }
+
+    /* تنسيق العناصر النصية */
+    h1 {
+        font-weight: normal;
+        text-transform: uppercase;
+        font-size: 2rem;
+    }
+
+    li {
+        display: block;
+        font-size: 1.2rem;
+        list-style-type: none;
+        padding: 1em;
+        text-transform: uppercase;
+    }
+
+    li span {
+        display: block;
+        font-size: 3rem;
+    }
+
+    /* تنسيق زر التسليم */
+    .submit-btn {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #000000;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px; /* تعديل المسافة العلوية حسب الحاجة */
+    }
+
+    /* تنسيق النتائج */
+    #result {
+        display: none;
+        margin-top: 20px; /* تعديل المسافة العلوية حسب الحاجة */
+        font-size: 2rem; /* تعديل حجم الخط حسب الحاجة */
+        border: none;
+        border-radius: 3px;
+        padding: 10px 20px;
+        color: #000;
+    }
+
+    /* تنسيق المراجعة */
+    #review {
+        display: none;
+        margin-top: 20px; /* تعديل المسافة العلوية حسب الحاجة */
+        font-size: 1.5rem; /* تعديل حجم الخط حسب الحاجة */
+        color: #000;
+        text-align: left;
+    }
+
+    /* الوسائط للشاشات الصغيرة */
+    @media all and (max-width: 768px) {
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        li {
+            font-size: 1rem;
+        }
+
+        li span {
+            font-size: 2.5rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>😒اختاري الاجابة تنشوف</h1>
+        <form id="quiz-form">
+            <div class="question">
+                <p>شو اللون المشهور ليارا</p>
+                <input type="radio" name="q1" value="a"> أحمر<br>
+                <input type="radio" name="q1" value="b"> أزرق<br>
+                <input type="radio" name="q1" value="c"> أخضر<br>
+                <input type="radio" name="q1" value="d"> اسود<br>
+            </div><br>
+
+            <div class="question">
+                <p>شو اكتر اشي بقوله الك</p>
+                <input type="radio" name="q2" value="a"> 🦉بومة<br>
+                <input type="radio" name="q2" value="b"> 🐟سردينة<br>
+                <input type="radio" name="q2" value="c"> 🐍تس<br>
+                <input type="radio" name="q2" value="d">جميع ما ذكر<br>
+            </div><br>
+
+            <div class="question">
+                <p>شو اسم اكتر شكلاطة منحبها</p>
+                <input type="radio" name="q3" value="a"> البقرة<br>
+                <input type="radio" name="q3" value="b"> تويكس<br>
+                <input type="radio" name="q3" value="c"> جلاكسي<br>
+                <input type="radio" name="q3" value="d"> ماكنتوش<br>
+            </div><br>
+
+            <div class="question">
+                <p>شو تاريخ ميلادي</p>
+                <input type="radio" name="q4" value="a"> 19\9<br>
+                <input type="radio" name="q4" value="b"> 23\9<br>
+                <input type="radio" name="q4" value="c"> 22\9<br>
+                <input type="radio" name="q4" value="d"> 24\9<br>
+            </div><br>
+
+            <div class="question">
+                <p> يومة باب الساحة كان يومة شو</p>
+                <input type="radio" name="q5" value="a"> احد<br>
+                <input type="radio" name="q5" value="b"> اثنين<br>
+                <input type="radio" name="q5" value="c"> ثلاثاء<br>
+                <input type="radio" name="q5" value="d"> خميس<br>
+            </div><br>
+
+            <div class="question">
+                <p> شو اكلتي المفضلة</p>
+                <input type="radio" name="q6" value="a"> قلاية بندورة<br>
+                <input type="radio" name="q6" value="b"> ملوخية<br>
+                <input type="radio" name="q6" value="c"> مقلوبة<br>
+                <input type="radio" name="q6" value="d"> كبسة<br>
+            </div><br>
+
+            <div class="question">
+                <p> شو اكبر مصدر للسعادة بالنسبة الي</p>
+                <input type="radio" name="q7" value="a"> مش عارف<br>
+                <input type="radio" name="q7" value="b"> مش عارف<br>
+                <input type="radio" name="q7" value="c"> مش عراف<br>
+                <input type="radio" name="q7" value="d"> يارا<br>
+            </div><br>
+            <div class="question">
+              <p> شو اكتر عصير بحبه</p>
+              <input type="radio" name="q8" value="a"> توت وموز<br>
+              <input type="radio" name="q8" value="b"> منجا<br>
+              <input type="radio" name="q8" value="c"> برتقان<br>
+              <input type="radio" name="q8" value="d"> جوافة<br>
+            </div><br>
+            <div class="question">
+              <p> شو اكتر فصل مابحبه (لاسباب امنية)</p>
+              <input type="radio" name="q9" value="a"> الصيف<br>
+              <input type="radio" name="q9" value="b"> الشتا<br>
+              <input type="radio" name="q9" value="c"> الخريف<br>
+              <input type="radio" name="q9" value="d"> الربيع<br>
+            </div><br>
+            <div class="question">
+              <p> مين اكتر حد بحب اسمعله</p>
+              <input type="radio" name="q10" value="a"> فيروز<br>
+              <input type="radio" name="q10" value="b"> صباح فخري<br>
+              <input type="radio" name="q10" value="c"> سيا<br>
+              <input type="radio" name="q10" value="d"> امنين<br>
+            </div><br>
+            <div class="question">
+              <p> شو لون العصفور يلي عندي</p>
+              <input type="radio" name="q11" value="a"> اخضر<br>
+              <input type="radio" name="q11" value="b"> ابيض<br>
+              <input type="radio" name="q11" value="c"> اصفر<br>
+              <input type="radio" name="q11" value="d"> ازرق<br>
+            </div><br>
+            <div class="question">
+              <p> شو اكتر مكان بحبه بنابلس</p>
+              <input type="radio" name="q12" value="a"> رفيديا<br>
+              <input type="radio" name="q12" value="b"> البلد القديمة<br>
+              <input type="radio" name="q12" value="c"> الجبل الشمالي<br>
+              <input type="radio" name="q12" value="d"> الضاحية<br>
+            </div><br>
+            <div class="question">
+              <p> شو اكتر نوع حلويات بحبه</p>
+              <input type="radio" name="q13" value="a"> ليزي كيك<br>
+              <input type="radio" name="q13" value="b"> تشيز كيك<br>
+              <input type="radio" name="q13" value="c"> بان كيك<br>
+              <input type="radio" name="q13" value="d"> كريب<br>
+            </div><br>
+            <!-- زر التسليم -->
+            <button type="button" class="submit-btn" onclick="calculateScore()">تسليم</button>
+        </form>
+
+        <!-- عرض النتيجة -->
+        <div id="result">
+            <h2 style="font-size: large;"><span id="score"></span> :علامتك هي</h2>
+        </div>
+
+        <!-- عرض المراجعة -->
+        <div id="review">
+            <h2 style="font-size: large;">مراجعة:</h2>
+            <ul id="review-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        function calculateScore() {
+            // قم بحساب العلامة
+            var score = 0;
+            var reviewList = document.getElementById('review-list');
+            reviewList.innerHTML = ''; // مسح محتويات قائمة المراجعة
+
+            // قم بتحديد الإجابات الصحيحة لكل سؤال
+            var correctAnswers = {
+                q1: 'b',
+                q2: 'd',
+                q3: 'a',
+                q4: 'b',
+                q5: 'b',
+                q6: 'a',
+                q7: 'd',
+                q8: 'a',
+                q9: 'b',
+                q10: 'a',
+                q11: 'c',
+                q12: 'd',
+                q13: 'a'
+            };
+
+            // النصوص المرتبطة بالإجابات الصحيحة
+            var answerTexts = {
+                q1: 'أزرق',
+                q2: 'جميع ما ذكر',
+                q3: 'البقرة',
+                q4: '23\\9',
+                q5: 'اثنين',
+                q6: 'قلاية بندورة',
+                q7: 'يارا',
+                q8: 'توت وموز',
+                q9: 'الشتا',
+                q10: 'فيروز',
+                q11: 'اصفر',
+                q12: 'الضاحية',
+                q13: 'ليزي كيك'
+            };
+
+            // قم بالتحقق من الإجابات وزيادة العلامة إذا كانت صحيحة
+            for (var question in correctAnswers) {
+                var selectedAnswer = document.querySelector('input[name="' + question + '"]:checked');
+                var questionElement = document.querySelector('input[name="' + question + '"]').parentElement;
+
+                if (selectedAnswer) {
+                    var isCorrect = selectedAnswer.value === correctAnswers[question];
+                    if (isCorrect) {
+                        score++;
+                    }
+
+                    // أضف السؤال والإجابة الصحيحة إلى المراجعة
+                    var reviewItem = document.createElement('li');
+                    reviewItem.innerHTML = questionElement.querySelector('p').innerText + 
+                        ' <br>إجابتك: ' + (selectedAnswer ? selectedAnswer.nextSibling.nodeValue.trim() : 'لم يتم الاختيار') + 
+                        (isCorrect ? ' ✔️' : ' ❌ الإجابة الصحيحة: ' + answerTexts[question]);
+
+                    reviewList.appendChild(reviewItem);
+                }
+            }
+
+            // عرض العلامة والمراجعة
+            document.getElementById('score').innerText = score + "/13";
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('review').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

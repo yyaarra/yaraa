@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+* {
+    font-family: 'Cairo', sans-serif;
+}
+    :root {
+      --smaller: .75;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    body {
+      background-color: #2acead;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .container {
+      color: #000000;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-weight: normal;
+      text-transform: uppercase;
+      font-size: 2rem;
+    }
+
+    li {
+      display: block;
+      font-size: 1.2rem;
+      list-style-type: none;
+      padding: 1em;
+      text-transform: uppercase;
+    }
+
+    li span {
+      display: block;
+      font-size: 3rem;
+    }
+
+    .emoji {
+      display: none;
+      padding: 1rem;
+    }
+
+    .emoji span {
+      font-size: 2.5rem;
+      padding: 0 .5rem;
+    }
+
+    .container {
+  position: relative; /* تأكد من أن العنصر يحتوي على position:relative لتحديد موقع الزر */
+}
+
+
+  button {
+    font-family: 'Cairo', sans-serif;
+
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: none;
+  position: absolute;
+  top: 120%;
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+.additional-text {
+  display: none;
+  margin-top: 20px; /* Adjust margin as needed */
+  font-size: 2.2rem; /* Adjust font size as needed */
+  background-color: #fdfdfd;
+  border: none;
+  border-radius: 3px;
+}
+    @media all and (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      li {
+        font-size: 1rem;
+      }
+
+      li span {
+        font-size: 2.5rem;
+      }
+    }
