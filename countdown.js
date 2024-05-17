@@ -8,20 +8,12 @@ function redirectToGreetings() {
     hour = minute * 60,
     day = hour * 24;
 
-  let today = new Date(),
-    dd = String(today.getDate()).padStart(2, "0"),
-    mm = String(today.getMonth() + 1).padStart(2, "0"),
-    yyyy = today.getFullYear(),
-    nextYear = yyyy + 1,
-    dayMonth = "05/16/",
-    birthday = dayMonth + yyyy;
+  // حدد التاريخ الذي تريد العد التنازلي له
+  let targetYear = 2024,
+    dayMonth = "05/18/",
+    birthday = dayMonth + targetYear;
 
-  today = mm + "/" + dd + "/" + yyyy;
-  if (today > birthday) {
-    birthday = dayMonth + nextYear;
-  }
-
-  const countDown = new Date(birthday).getTime(),
+  const countDown = new Date(birthday).getTime() + (22 * hour) + (52 * minute), // إضافة 22 ساعة و 52 دقيقة
     x = setInterval(function () {
       const now = new Date().getTime(),
         distance = countDown - now;
@@ -33,7 +25,7 @@ function redirectToGreetings() {
 
       if (distance < 0) {
         document.getElementById("headline").innerText =
-            "المناسبة هي سنة على اول مرة حكينا فيها بقدرش افوتها بدون ما اشكرك على كل موقف حلو وكل مرة ضحكت فيها بسببك واشكرك على وجودك احلا حد بحياتي كلها ";
+            "المناسبة هي ذكرى اول مرة وجودك بحياتي شكرا كتير على كلشي حلو بحياتي بسببك اكيد مش هقبل اضيع فرحتنا وانا مش هرضى ازعلك عشان هيك عملتلك محتوى جديد احلا من الاول";
         document.getElementById("event").style.display = "none";
         document.getElementById("countdown").style.display = "none";
         document.getElementById("content").style.display = "block";
