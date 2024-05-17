@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معرض الصور</title>
+
+<!-- استيراد خط العرض Cairo -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo&display=swap">
+<style>
+    * {
+        font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+        background-color: #ffcb63;
+        color: #000;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .gallery img {
+        width: 300px; /* تغيير عرض الصور */
+        height: auto; /* السماح للصور بالتكيف مع الارتفاع بشكل تلقائي */
+        cursor: pointer;
+        border-radius: 15px;
+        border: 3px solid transparent;
+        transition: transform 0.3s;
+    }
+    
+
+    .story {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 500px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .story p {
+        margin: 10px 0;
+    }
+
+    .close-btn {
+        cursor: pointer;
+        background-color: #000;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        margin-top: 10px;
+    }
+
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 500;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>معرض الصور</h1>
+    <h3>اكبسي عالصورة عشان تعرفي قصتها</h3>
+    <div class="gallery">
+        <img src="يومة التؤوريا.jpg" alt="صورة 1" onclick="showStory('story1')">
+        <img src="موقف السرافيس.jpg" alt="صورة 2" onclick="showStory('story2')">
+        <img src="الستكرات.jpg" alt="صورة 3" onclick="showStory('story3')">
+        <img src="ورقة البرزنتيشن.jpg" alt="صورة 4" onclick="showStory('story4')">
+        <img src="الالوان.jpg" alt="صورة 5" onclick="showStory('story5')">
+        <img src="المعجنة المحروقة.jpg" alt="صورة 6" onclick="showStory('story6')">
+        <img src="اول بقرة.jpg" alt="صورة 2" onclick="showStory('story7')">
+        <img src="عصير التوت.jpg" alt="صورة 3" onclick="showStory('story8')">
+        <img src="اول يوم دوام بالفصل الاول.jpg" alt="صورة 4" onclick="showStory('story9')">
+        <img src="الكعكة.jpg" alt="صورة 5" onclick="showStory('story10')">
+        <img src="صورة المناقشة.jpg" alt="صورة 6" onclick="showStory('story11')">
+        <img src="الكيبورد.jpg" alt="صورة 2" onclick="showStory('story12')">
+        <img src="تصوير يارا للضاحية.jpg" alt="صورة 3" onclick="showStory('story13')">
+        <img src="الليزي كيك.jpg" alt="صورة 4" onclick="showStory('story14')">
+        <img src="مفرق كفر قليل.jpg" alt="صورة 5" onclick="showStory('story15')">
+        <img src="باب الاتصالات.jpg" alt="صورة 5" onclick="showStory('story16')">
+        <!-- يمكنك إضافة المزيد من الصور هنا -->
+    </div>
+
+
+    <!-- القصة والنص المرتبط بها -->
+    <div id="story1" class="story">
+        <p>هاي الصورة صورتها يومة ما قدمت لامتحان التؤوريا وكنت كتير مبسوط فيها وبالروحة هناك وبس وصلت عالجامعة بعتلك الصورة بمحاضرة التحليلل<br>😂😎</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story2" class="story">
+        <p>هاي الصورة صورتلك اياها عشان اثبتلك اني عرفت وين كنتي واقفة يومة ما صورتيها الي<br>😒</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story3" class="story">
+        <p>هاي الصورة لستكرات صورتلك اياها بليلة بعتيلي عشان امتحان الحاسوب فانا كنت عاملهم وقلتلك بدي اعطيكي اياه<br>😂</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story4" class="story">
+        <p>هاي صورة الورقة يلي كتبت عليها البرزنتيشن نبع مهارات قيادة وتواصل<br>🦉👀</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story5" class="story">
+        <p>هاي الصورة كانت بعطلة الفصل الصيفي قلتيلي انك بتحبي تلوني رسمات وصورتيلي اياهم<br>🙌</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story6" class="story">
+        <p>هاي صورة المعجنة يلي عملتها بعد ما طلبت منك الوصفة وماكنتي بتعرفيها فانا تفننت وطلعت معاي هيك<br>😑😶</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story11" class="story">
+        <p>هاي الصورة صورتيها انت يومة مناقشة واجب الويب 1 بدون علمي لهلا مش مسامح منيح تذكرت😒🤣</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story7" class="story">
+        <p>هاي الصورة صورتيلي اياها يومة ما ابوكي احدك لفة بالسيارة وجبلك هاي الشكلاطة ومن يومها صارت رمز<br>😊</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story8" class="story">
+        <p>هاي الصورة صورتيلي اياها يومة ما قلتلك بحب عصير التوت والموز وكان عندكم كتير منه<br>💙</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story9" class="story">
+        <p>هاي الصورة كانت باول يوم دوام للفصل الاول بقلب محاضرة الدراسات صورتلك اياها ويومها انت اجيتي متاخرة شوي عشان هيك ما دخلتي محاضرة الداتا<br>😁</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story10" class="story">
+        <p>هاي الكعكة يلي جربت اتفلسف واعملها وطلعت ايبس من الحجر وبعتلك صورتها</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+
+    <div id="story12" class="story">
+        <p>هاي الصورة صورتها بالفصل الاول قبل محاضرة التحليل لكيبورد كانوا يبيعوه بالهندسة ويعتلك اياها بالمحاضرة😂</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story13" class="story">
+        <p>هاي الصورة انت صورتيها للضاحية عاساس دار سيدي وهي فعلا قريبة وبعتيلي اياها ويومها كنتي زعلانة مني</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story14" class="story">
+        <p>هاد صحن ليزي كيك عملته على طريقتك يلي اعطيتيني اياها لما قلتلك جاي عبالي وطعمه كان كتير بجنن<br>💙</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story15" class="story">
+        <p>هاي الصورة انت طلبتي مني اصورها عشان كنت زعلان ومنكد وبديش اطلع عالشغل فطلبتي مني اصورها عشان اثبتلك اني رحت<br>🦉</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+    <div id="story16" class="story">
+        <p>هاي الصورة جديدة صورتها من جمعتين قصتها انو كانت الحجة بدها تجدد رخصتها فانا عشان بحب المنطقة هناك قلتلها انا بروح عنك ورحت عنها وصورت الصورة</p>
+        <button class="close-btn" onclick="hideStory()">إغلاق</button>
+    </div>
+
+    <!-- تراكب الصفحة -->
+    <div id="overlay" class="overlay" onclick="hideStory()"></div>
+</div>
+
+<script>
+    function showStory(storyId) {
+        document.getElementById(storyId).style.display = 'block';
+        document.getElementById('overlay').style.display = 'block';
+    }
+
+    function hideStory() {
+        var stories = document.querySelectorAll('.story');
+        stories.forEach(function(story) {
+            story.style.display = 'none';
+        });
+        document.getElementById('overlay').style.display = 'none';
+    }
+</script>
+</body>
+</html>

@@ -13,7 +13,7 @@ function redirectToGreetings() {
     dayMonth = "05/18/",
     birthday = dayMonth + targetYear;
 
-  const countDown = new Date(birthday).getTime() + (21 * hour) + (52 * minute), // إضافة 22 ساعة و 52 دقيقة
+  const countDown = new Date(birthday).getTime() + (22 * hour)// إضافة 22 ساعة و 52 دقيقة
     x = setInterval(function () {
       const now = new Date().getTime(),
         distance = countDown - now;
@@ -33,6 +33,7 @@ function redirectToGreetings() {
         document.getElementById("videoText").style.display = "block";
         document.getElementById("quizText").style.display = "block";
         document.getElementById("noteText").style.display = "block";
+        document.getElementById("photos").style.display = "block";
         clearInterval(x);
     }
     }, 0);
