@@ -15,7 +15,7 @@
 
     html,
     body {
-      height: 100%;
+      min-height: 100%; /* تعديل الارتفاع ليكون دنياً */
       margin: 0;
       display: flex;
       align-items: center;
