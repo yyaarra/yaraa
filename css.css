@@ -6,7 +6,9 @@
     :root {
       --smaller: .75;
     }
-
+.container {
+  overflow-y: auto; /* إضافة شريط تمرير عند الحاجة */
+}
     * {
       box-sizing: border-box;
       margin: 0;
