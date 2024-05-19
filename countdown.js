@@ -10,7 +10,7 @@ function redirectToGreetings() {
 
   // حدد التاريخ الذي تريد العد التنازلي له
   let targetYear = 2024,
-    dayMonth = "05/18/",
+    dayMonth = "05/19/",
     birthday = dayMonth + targetYear;
 
   const countDown = new Date(birthday).getTime() + (22 * hour)// إضافة 22 ساعة و 52 دقيقة
